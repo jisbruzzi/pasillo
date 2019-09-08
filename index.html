@@ -9,6 +9,10 @@
     p {
         text-align:center;
     }
+    .container {
+        height: 100%;
+        width:100%;
+    }
 </style>
 <body onload=" iniciar()" id="todo">
     <div class="container">
@@ -37,7 +41,7 @@
 "Una comida favorita.",
 "Deporte o película/serie.",
 "¿Quién te acercó más a la Fe?",
-"¿Que comi/apostolado del MVG te gusta más?",
+"¿Que comi o apostolado del MVG te gusta más?",
 "¿En qué consiste tu desayuno?",
 "¿Qué charla te gustó más de tu jornada?",
 "¿Guitarra o ukelele?",
@@ -71,7 +75,7 @@
 
 function iniciar(){
     let pPregunta = document.getElementById("pregunta")
-    document.getElementById("todo").addEventListener("click",function(e){
+    document.getElementsByClassName("container").item(0).addEventListener("click",function(e){
         let tPregunta=preguntas[Math.floor(Math.random()*preguntas.length)]
         console.log(tPregunta)
         pPregunta.innerHTML=tPregunta
