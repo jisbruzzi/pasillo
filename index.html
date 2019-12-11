@@ -3,10 +3,13 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <style>
+    .desaparecer {
+        transition: opacity 1s ease-out;
+    }
     body {
         background-color:rgb(226, 226, 241)
     }
-    p {
+    p, h1 {
         text-align:center;
     }
     .container {
@@ -15,13 +18,21 @@
     }
 </style>
 <body onload=" iniciar()" id="todo">
+    <header class="desaparecer">
+        <h1>Pasillo</h1>
+    </header>
     <div class="container">
-        <div class="row justify-content-md-center">
-            <div class="col justify-content-md-center">
-                <br>
+        <article >
+            <div class="row justify-content-md-center">
+                <div class="col justify-content-md-center">
+                    <br>
                     <p id="pregunta" class="display-4">Tocá y respondé</p>
+                </div>
             </div>
-        </div>
+        </article>
+        <footer class="desaparecer">
+            <p><a href="about.html">¿Qué es pasillo.com.ar?</a></p>
+        </footer>
     </div>
     
 </body>
@@ -72,13 +83,20 @@
 "¿Alguna vez te planteaste la vocación religiosa?"
 ]
 
-
 function iniciar(){
     let pPregunta = document.getElementById("pregunta")
     document.getElementsByClassName("container").item(0).addEventListener("click",function(e){
         let tPregunta=preguntas[Math.floor(Math.random()*preguntas.length)]
         console.log(tPregunta)
         pPregunta.innerHTML=tPregunta
+        for(let e of document.getElementsByClassName("desaparecer")){
+            e.style.opacity=0
+        }
+        setTimeout(function desaparecerlos(){
+            for(let e of document.getElementsByClassName("desaparecer")){
+                e.style.visibility="hidden"
+            }
+        },1000)
     })
 }
 
